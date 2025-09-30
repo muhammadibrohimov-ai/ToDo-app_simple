@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Features</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    button {
+      background: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      background: #667eea;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    button a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      display: block;
+    }
+
+    button:hover a {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button>
+      <a href="edit_feature/{{ id }}/1">Edit title</a>
+    </button>
+    <button>
+      <a href="edit_feature/{{ id }}/2">Edit description</a>
+    </button>
+    <button>
+      <a href="edit_feature/{{ id }}/3">Edit date and time</a>
+    </button>
+    <button>
+      <a href="edit_feature/{{ id }}/4">Edit status</a>
+    </button>
+  </div>
+</body>
+</html>

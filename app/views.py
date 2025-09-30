@@ -49,3 +49,59 @@ def delete_todo(request, id):
         
     
     return redirect("/")
+
+def edit_todo(request, id):
+    
+    context = {
+        'id':id
+    }
+    
+    return render(request=request, template_name="edit.html", context=context)
+
+def edit_todo_feature(request, id, num):
+    
+    context = {
+        'id':id,
+        'num': num
+    }
+    
+    return render(request=request, template_name="edit_feature.html", context=context)
+
+
+def full_edit(request, id, num):
+    
+    if request.POST:
+        
+        data = request.POST
+
+        obj = ToDo.objects.get(id = id)
+        
+        if data.get('title'):
+            title = data.get('title')
+            obj.title = title
+
+        
+        if data.get('desc'): 
+            desc = data.get('desc')
+            obj.desc = desc
+            
+        
+        if data.get('status'): 
+            status = data.get('status')
+            obj.status = status
+
+        if data.get('date'): 
+            date = data.get('date')
+            time = data.get('time')
+            date = datetime.strptime(date, "%Y-%m-%d")
+            time = datetime.strptime(time, "%H:%M")
+
+            date = date + timedelta(hours=time.hour, minutes=time.minute, seconds=time.second)
+            
+            obj.time = date
+
+        obj.save()
+        
+
+
+    return redirect("/")
