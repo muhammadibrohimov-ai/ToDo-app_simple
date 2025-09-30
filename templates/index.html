@@ -68,16 +68,17 @@
     <hr />
   </center>
 
+  
   <div class="row">
-
+  
     <div class="col-md-8">
+      {% for data in todo %}
       <div class="card">
 
-        {% for data in todo %}
-
+            
         <center><b>{{ data.title }}</b></center>
         <hr />
-        {{ data.date_time }}
+        {{ data.time }}
         <hr />
         {{ data.desc }}
         <hr />
@@ -85,26 +86,27 @@
         <br />
 
         <button class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span><a
-            href="delete/<int:{{ data.id }}>">O'chirish</a></button>
+            href="delete/{{ data.id }}">O'chirish</a></button>
         <button class="btn btn-primary" style="float: right; margin-right: 10px;"><span
-            class="glyphicon glyphicon-pencil"></span><a href="edit/<int:{{ data.id }}>">Tahrirlash</a></button>
+            class="glyphicon glyphicon-pencil"></span><a href="/">Tahrirlash</a></button>
 
-        {% endfor %}
+        
 
       </div>
+      {% endfor %}
     </div>
 
 
     <div class="col-md-1"> </div>
     <div class="col-md-3">
       <div class="submit_form">
-        <form action="#"> {% csrf_token %}
+        <form action="create/" method="post"> {% csrf_token %}
 
           <label for="">Title</label><br>
           <input type="text" name="title" , placeholder="Title"><br><br>
 
           <label for="">Description</label><br>
-          <textarea name="desc" id="">Description</textarea><br><br>
+          <textarea name="desc" id="" placeholder="Description"></textarea><br><br>
 
           <label for="">Date and time</label><br>
           <input type="date" name="date" id=""><br>
